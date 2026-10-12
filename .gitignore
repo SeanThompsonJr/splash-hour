@@ -1,0 +1,11 @@
+# Private notes and local config
+DESIGN-PLAN.md
+NEXT-STEPS.md
+.claude/
+
+# Image-rendering sources and headless browser profiles (not part of the site)
+tools/
+
+# Reference images and raw source material are never published
+reference/
+*.psd
