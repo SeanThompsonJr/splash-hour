@@ -9,3 +9,6 @@ tools/
 # Reference images and raw source material are never published
 reference/
 *.psd
+
+# Instagram renders live outside the published site
+instagram/
