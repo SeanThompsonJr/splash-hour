@@ -3,41 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Splash Hour: free live Minecraft events every week</title>
-<meta name="description" content="Splash Hour is a free, live Minecraft event held in-game every week. Meet other players at the waterfall to build, race and hang out. See when it starts next.">
-<!-- Keep noindex until the organizer approves and the site is on its own domain. See LAUNCH-CHECKLIST.md -->
+<title>Splash Hour: a Minecraft event site, built from blocks</title>
+<meta name="description" content="Splash Hour is a design concept for a free, live Minecraft meetup: a whole website built from blocks, with a waterfall, a live countdown and two players hanging out.">
+<!-- Design concept, not a real event: keep it out of search engines. -->
 <meta name="robots" content="noindex, nofollow">
-<link rel="canonical" href="https://splashhour.example/">
 <meta name="theme-color" content="#A9DBFF">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Splash Hour">
-<meta property="og:title" content="Splash Hour: free live Minecraft events every week">
-<meta property="og:description" content="A free, live meetup inside Minecraft. Meet at the waterfall to build, race and hang out with other players.">
+<meta property="og:title" content="Splash Hour: a Minecraft event site, built from blocks">
+<meta property="og:description" content="A design concept for a free, live Minecraft meetup, built entirely from blocks. Not a real event.">
 <meta property="og:url" content="https://splashhour.example/">
 <meta property="og:image" content="https://splashhour.example/images/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="A pixel-art floating island with a waterfall and two blocky players, next to the words Splash Hour.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Splash Hour: free live Minecraft events every week">
-<meta name="twitter:description" content="A free, live meetup inside Minecraft. Meet at the waterfall to build, race and hang out with other players.">
+<meta name="twitter:title" content="Splash Hour: a Minecraft event site, built from blocks">
+<meta name="twitter:description" content="A design concept for a free, live Minecraft meetup, built entirely from blocks. Not a real event.">
 <meta name="twitter:image" content="https://splashhour.example/images/og-image.png">
 
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Splash Hour",
-  "url": "https://splashhour.example/",
-  "logo": "https://splashhour.example/images/logo.png",
-  "description": "A free, live community event held inside Minecraft every week. Not an official Minecraft event. Not approved by or associated with Mojang or Microsoft.",
-  "areaServed": "Worldwide",
-  "knowsAbout": ["Minecraft", "Minecraft events", "Minecraft real-time events", "Live in-game events"]
-}
-</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -101,21 +87,35 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
 }
 .skip:focus { top: 8px; }
 
-/* Sample tag: marks every placeholder */
+/* Sample tag: a little wooden sign on a post marks every made-up detail */
 .tag {
-  display: inline-block; vertical-align: .2em;
-  margin-inline: .15em 0;
-  padding: 0 .45em;
-  font: 700 .75rem/1.6 var(--body); letter-spacing: .02em;
-  background: var(--quartz); color: var(--ink);
-  border: 1px dashed var(--ink);
+  position: relative; display: inline-block; vertical-align: .25em;
+  margin-inline: .15em 0; padding: 1px .5em 0;
+  font: 600 .8125rem/1.45 var(--display); letter-spacing: .03em;
+  color: #2B1B0E; /* 5.12:1 on the darkest plank seam */
+  background: linear-gradient(#B08850 0 0) 0 55% / 100% 1px no-repeat, #C9A36B;
+  border: 2px solid #5A3D25;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,.25);
   white-space: nowrap;
 }
+.tag::after {
+  content: ""; position: absolute; left: 50%; top: 100%;
+  width: 4px; height: 5px; margin: 2px 0 0 -2px; background: #5A3D25;
+}
 
-/* Concept banner */
-.concept { background: var(--quartz); border-bottom: 2px dashed var(--ink); font-size: .9375rem; }
-.concept .wrap { padding-block: 8px; }
-.concept strong { font-weight: 700; }
+/* Concept note: collapsible; the one-line summary always stays visible */
+.concept { background: var(--quartz); border-bottom: 3px solid var(--ink); font-size: .9375rem; }
+.concept .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; column-gap: 16px; padding-block: 2px; }
+.concept-lead { font-weight: 700; }
+.concept-toggle {
+  min-height: 44px; padding: 0 4px; margin-right: -4px; background: none; border: 0; cursor: pointer;
+  font: 700 .9375rem/1 var(--body); color: var(--ink);
+  text-decoration: underline; text-underline-offset: .2em; text-decoration-thickness: 2px;
+}
+.concept-more { flex: 0 0 100%; padding-bottom: 14px; }
+.concept-more p { max-width: 75ch; }
+.concept-more[hidden] { display: none; }
+.concept-more p + p { margin-top: 8px; }
 
 /* Header */
 .site-header { background: var(--sky); border-bottom: 3px solid var(--ink); z-index: 20; }
@@ -179,6 +179,23 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
   box-shadow: inset 0 4px 0 #fff, inset 0 -5px 0 rgba(43,33,49,.12);
   clip-path: polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px);
 }
+
+/* Text blocks: every load gives each panel a different block texture (original pixel art) */
+/* blocks:start */
+.blk-oak { --blk-fg: #2B2131; color: #2B2131; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='3' width='16' height='1' fill='%23B38B55'/%3E%3Crect x='0' y='7' width='16' height='1' fill='%23B38B55'/%3E%3Crect x='0' y='11' width='16' height='1' fill='%23B38B55'/%3E%3Crect x='0' y='15' width='16' height='1' fill='%23B38B55'/%3E%3Crect x='5' y='0' width='1' height='3' fill='%23B38B55'/%3E%3Crect x='12' y='4' width='1' height='3' fill='%23B38B55'/%3E%3Crect x='2' y='8' width='1' height='3' fill='%23B38B55'/%3E%3Crect x='9' y='12' width='1' height='3' fill='%23B38B55'/%3E%3Crect x='1' y='1' width='2' height='1' fill='%23CDA772'/%3E%3Crect x='9' y='2' width='2' height='1' fill='%23CDA772'/%3E%3Crect x='13' y='5' width='2' height='1' fill='%23CDA772'/%3E%3Crect x='4' y='6' width='2' height='1' fill='%23CDA772'/%3E%3Crect x='7' y='9' width='2' height='1' fill='%23CDA772'/%3E%3Crect x='12' y='10' width='2' height='1' fill='%23CDA772'/%3E%3Crect x='1' y='13' width='2' height='1' fill='%23CDA772'/%3E%3Crect x='6' y='14' width='2' height='1' fill='%23CDA772'/%3E%3C/svg%3E") 0 0 / 64px 64px, #C29A62; } /* text 4.94:1 worst case */
+.blk-birch { --blk-fg: #2B2131; color: #2B2131; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='3' width='16' height='1' fill='%23BFAE72'/%3E%3Crect x='0' y='7' width='16' height='1' fill='%23BFAE72'/%3E%3Crect x='0' y='11' width='16' height='1' fill='%23BFAE72'/%3E%3Crect x='0' y='15' width='16' height='1' fill='%23BFAE72'/%3E%3Crect x='5' y='0' width='1' height='3' fill='%23BFAE72'/%3E%3Crect x='12' y='4' width='1' height='3' fill='%23BFAE72'/%3E%3Crect x='2' y='8' width='1' height='3' fill='%23BFAE72'/%3E%3Crect x='9' y='12' width='1' height='3' fill='%23BFAE72'/%3E%3Crect x='1' y='1' width='2' height='1' fill='%23E4D7A4'/%3E%3Crect x='9' y='2' width='2' height='1' fill='%23E4D7A4'/%3E%3Crect x='13' y='5' width='2' height='1' fill='%23E4D7A4'/%3E%3Crect x='4' y='6' width='2' height='1' fill='%23E4D7A4'/%3E%3Crect x='7' y='9' width='2' height='1' fill='%23E4D7A4'/%3E%3Crect x='12' y='10' width='2' height='1' fill='%23E4D7A4'/%3E%3Crect x='1' y='13' width='2' height='1' fill='%23E4D7A4'/%3E%3Crect x='6' y='14' width='2' height='1' fill='%23E4D7A4'/%3E%3C/svg%3E") 0 0 / 64px 64px, #D9C98F; } /* text 6.97:1 worst case */
+.blk-cherry { --blk-fg: #2B2131; color: #2B2131; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='3' width='16' height='1' fill='%23D29AA0'/%3E%3Crect x='0' y='7' width='16' height='1' fill='%23D29AA0'/%3E%3Crect x='0' y='11' width='16' height='1' fill='%23D29AA0'/%3E%3Crect x='0' y='15' width='16' height='1' fill='%23D29AA0'/%3E%3Crect x='5' y='0' width='1' height='3' fill='%23D29AA0'/%3E%3Crect x='12' y='4' width='1' height='3' fill='%23D29AA0'/%3E%3Crect x='2' y='8' width='1' height='3' fill='%23D29AA0'/%3E%3Crect x='9' y='12' width='1' height='3' fill='%23D29AA0'/%3E%3Crect x='1' y='1' width='2' height='1' fill='%23F2CDD0'/%3E%3Crect x='9' y='2' width='2' height='1' fill='%23F2CDD0'/%3E%3Crect x='13' y='5' width='2' height='1' fill='%23F2CDD0'/%3E%3Crect x='4' y='6' width='2' height='1' fill='%23F2CDD0'/%3E%3Crect x='7' y='9' width='2' height='1' fill='%23F2CDD0'/%3E%3Crect x='12' y='10' width='2' height='1' fill='%23F2CDD0'/%3E%3Crect x='1' y='13' width='2' height='1' fill='%23F2CDD0'/%3E%3Crect x='6' y='14' width='2' height='1' fill='%23F2CDD0'/%3E%3C/svg%3E") 0 0 / 64px 64px, #E9B8BC; } /* text 6.50:1 worst case */
+.blk-darkoak { --blk-fg: #FFFFFF; color: #FFFFFF; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='3' width='16' height='1' fill='%2346301D'/%3E%3Crect x='0' y='7' width='16' height='1' fill='%2346301D'/%3E%3Crect x='0' y='11' width='16' height='1' fill='%2346301D'/%3E%3Crect x='0' y='15' width='16' height='1' fill='%2346301D'/%3E%3Crect x='5' y='0' width='1' height='3' fill='%2346301D'/%3E%3Crect x='12' y='4' width='1' height='3' fill='%2346301D'/%3E%3Crect x='2' y='8' width='1' height='3' fill='%2346301D'/%3E%3Crect x='9' y='12' width='1' height='3' fill='%2346301D'/%3E%3Crect x='1' y='1' width='2' height='1' fill='%236B4A2E'/%3E%3Crect x='9' y='2' width='2' height='1' fill='%236B4A2E'/%3E%3Crect x='13' y='5' width='2' height='1' fill='%236B4A2E'/%3E%3Crect x='4' y='6' width='2' height='1' fill='%236B4A2E'/%3E%3Crect x='7' y='9' width='2' height='1' fill='%236B4A2E'/%3E%3Crect x='12' y='10' width='2' height='1' fill='%236B4A2E'/%3E%3Crect x='1' y='13' width='2' height='1' fill='%236B4A2E'/%3E%3Crect x='6' y='14' width='2' height='1' fill='%236B4A2E'/%3E%3C/svg%3E") 0 0 / 64px 64px, #5A3D25; } /* text 7.94:1 worst case */
+.blk-sand { --blk-fg: #2B2131; color: #2B2131; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='4' y='2' width='1' height='1' fill='%23D4C68E'/%3E%3Crect x='15' y='14' width='1' height='1' fill='%23DCCF98'/%3E%3Crect x='12' y='6' width='1' height='1' fill='%23F0E6BE'/%3E%3Crect x='0' y='12' width='1' height='1' fill='%23DCCF98'/%3E%3Crect x='0' y='14' width='1' height='1' fill='%23DCCF98'/%3E%3Crect x='7' y='3' width='1' height='1' fill='%23D4C68E'/%3E%3Crect x='0' y='0' width='2' height='1' fill='%23DCCF98'/%3E%3Crect x='0' y='12' width='2' height='1' fill='%23D4C68E'/%3E%3Crect x='13' y='0' width='2' height='1' fill='%23D4C68E'/%3E%3Crect x='14' y='15' width='2' height='1' fill='%23D4C68E'/%3E%3Crect x='11' y='7' width='2' height='1' fill='%23D4C68E'/%3E%3Crect x='14' y='9' width='1' height='1' fill='%23F0E6BE'/%3E%3Crect x='3' y='5' width='2' height='1' fill='%23DCCF98'/%3E%3Crect x='9' y='3' width='2' height='1' fill='%23F0E6BE'/%3E%3Crect x='13' y='6' width='1' height='1' fill='%23F0E6BE'/%3E%3Crect x='15' y='12' width='2' height='1' fill='%23D4C68E'/%3E%3Crect x='15' y='7' width='2' height='1' fill='%23F0E6BE'/%3E%3Crect x='13' y='5' width='1' height='1' fill='%23DCCF98'/%3E%3Crect x='11' y='2' width='1' height='1' fill='%23DCCF98'/%3E%3Crect x='3' y='5' width='2' height='1' fill='%23F0E6BE'/%3E%3Crect x='11' y='15' width='2' height='1' fill='%23D4C68E'/%3E%3Crect x='15' y='1' width='1' height='1' fill='%23DCCF98'/%3E%3Crect x='12' y='5' width='1' height='1' fill='%23DCCF98'/%3E%3Crect x='7' y='0' width='1' height='1' fill='%23DCCF98'/%3E%3Crect x='7' y='12' width='2' height='1' fill='%23F0E6BE'/%3E%3Crect x='11' y='14' width='1' height='1' fill='%23DCCF98'/%3E%3C/svg%3E") 0 0 / 64px 64px, #E6DAA8; } /* text 8.99:1 worst case */
+.blk-snow { --blk-fg: #2B2131; color: #2B2131; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='2' width='1' height='1' fill='%23E8EFF5'/%3E%3Crect x='5' y='9' width='1' height='1' fill='%23DDE7EF'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%23E8EFF5'/%3E%3Crect x='11' y='14' width='2' height='1' fill='%23E8EFF5'/%3E%3Crect x='1' y='0' width='1' height='1' fill='%23E8EFF5'/%3E%3Crect x='10' y='12' width='1' height='1' fill='%23DDE7EF'/%3E%3Crect x='5' y='7' width='1' height='1' fill='%23DDE7EF'/%3E%3Crect x='5' y='10' width='1' height='1' fill='%23DDE7EF'/%3E%3Crect x='11' y='5' width='1' height='1' fill='%23E8EFF5'/%3E%3Crect x='11' y='11' width='1' height='1' fill='%23E8EFF5'/%3E%3Crect x='5' y='12' width='2' height='1' fill='%23E8EFF5'/%3E%3Crect x='7' y='15' width='1' height='1' fill='%23E8EFF5'/%3E%3Crect x='11' y='14' width='1' height='1' fill='%23E8EFF5'/%3E%3Crect x='14' y='15' width='2' height='1' fill='%23DDE7EF'/%3E%3Crect x='10' y='5' width='2' height='1' fill='%23E8EFF5'/%3E%3Crect x='15' y='9' width='1' height='1' fill='%23E8EFF5'/%3E%3Crect x='9' y='6' width='1' height='1' fill='%23E8EFF5'/%3E%3Crect x='2' y='10' width='2' height='1' fill='%23DDE7EF'/%3E%3Crect x='6' y='3' width='1' height='1' fill='%23DDE7EF'/%3E%3Crect x='8' y='7' width='2' height='1' fill='%23DDE7EF'/%3E%3Crect x='4' y='8' width='1' height='1' fill='%23DDE7EF'/%3E%3Crect x='1' y='13' width='2' height='1' fill='%23DDE7EF'/%3E%3C/svg%3E") 0 0 / 64px 64px, #F3F7FA; } /* text 12.28:1 worst case */
+.blk-diamond { --blk-fg: #2B2131; color: #2B2131; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='16' height='1' fill='%235CC7C3'/%3E%3Crect x='0' y='15' width='16' height='1' fill='%235CC7C3'/%3E%3Crect x='0' y='0' width='1' height='16' fill='%235CC7C3'/%3E%3Crect x='15' y='0' width='1' height='16' fill='%235CC7C3'/%3E%3Crect x='3' y='3' width='2' height='1' fill='%23B7F3F0'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%23B7F3F0'/%3E%3Crect x='11' y='11' width='2' height='1' fill='%235CC7C3'/%3E%3Crect x='12' y='10' width='1' height='1' fill='%235CC7C3'/%3E%3Crect x='6' y='9' width='1' height='1' fill='%23B7F3F0'/%3E%3Crect x='9' y='5' width='2' height='1' fill='%23B7F3F0'/%3E%3C/svg%3E") 0 0 / 64px 64px, #7FE0DC; } /* text 7.63:1 worst case */
+.blk-emerald { --blk-fg: #2B2131; color: #2B2131; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='16' height='1' fill='%237CCB8F'/%3E%3Crect x='0' y='15' width='16' height='1' fill='%237CCB8F'/%3E%3Crect x='0' y='0' width='1' height='16' fill='%237CCB8F'/%3E%3Crect x='15' y='0' width='1' height='16' fill='%237CCB8F'/%3E%3Crect x='3' y='3' width='2' height='1' fill='%23C9F2D3'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%23C9F2D3'/%3E%3Crect x='11' y='11' width='2' height='1' fill='%237CCB8F'/%3E%3Crect x='12' y='10' width='1' height='1' fill='%237CCB8F'/%3E%3Crect x='6' y='9' width='1' height='1' fill='%23C9F2D3'/%3E%3Crect x='9' y='5' width='2' height='1' fill='%23C9F2D3'/%3E%3C/svg%3E") 0 0 / 64px 64px, #9FE3B0; } /* text 7.91:1 worst case */
+.blk-bricks { --blk-fg: #FFFFFF; color: #FFFFFF; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='7' width='16' height='1' fill='%234B4D55'/%3E%3Crect x='0' y='15' width='16' height='1' fill='%234B4D55'/%3E%3Crect x='7' y='0' width='1' height='7' fill='%234B4D55'/%3E%3Crect x='15' y='0' width='1' height='7' fill='%234B4D55'/%3E%3Crect x='3' y='8' width='1' height='7' fill='%234B4D55'/%3E%3Crect x='11' y='8' width='1' height='7' fill='%234B4D55'/%3E%3Crect x='1' y='1' width='4' height='1' fill='%236B6D75'/%3E%3Crect x='9' y='1' width='3' height='1' fill='%236B6D75'/%3E%3Crect x='5' y='9' width='4' height='1' fill='%236B6D75'/%3E%3Crect x='13' y='9' width='2' height='1' fill='%236B6D75'/%3E%3C/svg%3E") 0 0 / 64px 64px, #5E6068; } /* text 5.16:1 worst case */
+.blk-deepslate { --blk-fg: #FFFFFF; color: #FFFFFF; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='7' width='16' height='1' fill='%232E2440'/%3E%3Crect x='0' y='15' width='16' height='1' fill='%232E2440'/%3E%3Crect x='7' y='0' width='1' height='16' fill='%232E2440'/%3E%3Crect x='15' y='0' width='1' height='16' fill='%232E2440'/%3E%3Crect x='2' y='2' width='2' height='1' fill='%234E3F66'/%3E%3Crect x='10' y='4' width='1' height='1' fill='%234E3F66'/%3E%3Crect x='4' y='11' width='1' height='1' fill='%234E3F66'/%3E%3Crect x='12' y='12' width='2' height='1' fill='%234E3F66'/%3E%3C/svg%3E") 0 0 / 64px 64px, #3B2F4F; } /* text 9.43:1 worst case */
+/* blocks:end */
+.panel[class*="blk-"] { box-shadow: inset 0 4px 0 rgba(255,255,255,.3), inset 0 -5px 0 rgba(0,0,0,.2); image-rendering: pixelated; }
+.panel[class*="blk-"] :focus-visible { outline-color: var(--blk-fg); box-shadow: none; }
+.panel[class*="blk-"] .copy-status { color: inherit; }
 
 /* ---------- Hero (surface) ---------- */
 .hero {
@@ -282,12 +299,12 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after {
   content: ""; flex: none; width: 14px; height: 14px;
-  background: linear-gradient(var(--ink) 0 0) center / 14px 4px no-repeat, linear-gradient(var(--ink) 0 0) center / 4px 14px no-repeat;
+  background: linear-gradient(currentColor 0 0) center / 14px 4px no-repeat, linear-gradient(currentColor 0 0) center / 4px 14px no-repeat;
   transition: transform 200ms ease-out;
 }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq details > div { padding: 0 16px 16px; max-width: 60ch; }
-.faq summary:focus-visible { outline-offset: -6px; box-shadow: none; outline-color: var(--ink); }
+.faq summary:focus-visible { outline-offset: -6px; box-shadow: none; outline-color: var(--blk-fg, var(--ink)); }
 
 /* Reminder */
 .reminder { margin-top: 96px; text-align: center; }
@@ -308,11 +325,25 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
 .check label { font-weight: 400; margin: 0; }
 .check-wrap { display: flex; align-items: flex-start; min-height: 44px; }
 .hint { color: var(--ink-soft); font-size: .9375rem; margin-top: 6px; }
-.error { color: var(--error); font-weight: 700; font-size: .9375rem; margin-top: 6px; }
+/* Errors sit on a quartz chip so they read on any block (red on quartz 6.14:1) */
+.error { display: inline-block; color: var(--error); background: var(--quartz); padding: 2px 8px; font-weight: 700; font-size: .9375rem; margin-top: 8px; }
 .error:empty { display: none; }
 [aria-invalid="true"] { border-color: var(--error) !important; box-shadow: 0 0 0 1px var(--error); }
 .form .btn { width: 100%; margin-top: 24px; }
-.success { text-align: center; padding: 8px 0; }
+/* The sign-up form is a dirt block with grass on top */
+.dirt-block {
+  color: #fff;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6' shape-rendering='crispEdges'%3E%3Cpath fill='%235FA834' d='M0 0h16v3H0zM0 3h2v2H0zM3 3h2v1H3zM6 3h3v3H6zM10 3h1v1h-1zM12 3h3v2h-3z'/%3E%3Cpath fill='%237CC24A' d='M1 0h2v1H1zM8 1h2v1H8zM13 0h1v1h-1z'/%3E%3C/svg%3E") 0 0 / 64px 24px repeat-x,
+    var(--specks) 0 0 / 64px 64px,
+    var(--dirt);
+  box-shadow: inset 0 -5px 0 rgba(0,0,0,.2);
+  image-rendering: pixelated;
+}
+.form.dirt-block { padding-top: 44px; }
+.dirt-block .hint { color: #F3E6D8; } /* 5.71:1 on dirt */
+.demo-note { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 2px solid rgba(255,255,255,.3); }
+.success { text-align: center; padding-bottom: 32px; }
 .success h3 { font: 600 1.75rem/1.2 var(--display); }
 .success p { margin-top: 8px; }
 
@@ -327,9 +358,14 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
 <body>
 <a class="skip" href="#main">Skip to main content</a>
 
-<aside class="concept" aria-label="Concept prototype notice">
+<aside class="concept" aria-label="About this page">
   <div class="wrap">
-    <p><strong>Concept prototype.</strong> Items marked “Sample” are placeholders: the event name, weekly time, server address and version, the hour’s plan, house rules, organizer and contact. The reminder form doesn’t send anything yet.</p>
+    <p class="concept-lead">Design concept, not a real event.</p>
+    <button class="concept-toggle" type="button" id="concept-toggle" aria-expanded="true" aria-controls="concept-more">Hide details</button>
+    <div class="concept-more" id="concept-more">
+      <p>Splash Hour is made up. It’s a design piece made for an Instagram post, to show what a Minecraft event website could look like if it were built entirely from blocks.</p>
+      <p>Anything with a <span class="tag">Sample</span> sign is invented, including the event name, time, server address, plan, rules and contact. The countdown really ticks, but there’s no event to join, and the email form doesn’t send anything.</p>
+    </div>
   </div>
 </aside>
 
@@ -370,7 +406,7 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
         </div>
 
         <div class="actions">
-          <a class="btn btn--go" href="#reminder" data-primary>Get a weekly reminder</a>
+          <a class="btn btn--go" href="#reminder" data-primary>Try the reminder sign-up</a>
           <button class="btn" type="button" id="add-cal">
             <svg width="18" height="18" viewBox="0 0 9 9" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 1h9v8H0zM1 3v5h7V3z"/><path fill="currentColor" d="M2 0h1v2H2zM6 0h1v2H6zM2 4h2v2H2z"/></svg>
             Add to calendar
@@ -934,11 +970,11 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
       <h2 id="join-title">How to join</h2>
       <p class="lede">Any skin, any skill level. All you need is Minecraft and an internet connection.</p>
       <ol class="steps">
-        <li class="panel">
+        <li class="panel" data-block>
           <h3>Open Minecraft: Java Edition</h3>
           <p>Use version 1.21 or newer. <span class="tag">Sample</span></p>
         </li>
-        <li class="panel">
+        <li class="panel" data-block>
           <h3>Add the server</h3>
           <p>Choose Multiplayer, then Add Server, and paste this address: <span class="tag">Sample</span></p>
           <div class="address">
@@ -947,7 +983,7 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
           </div>
           <p class="copy-status" id="copy-status" role="status"></p>
         </li>
-        <li class="panel">
+        <li class="panel" data-block>
           <h3>Join at start time</h3>
           <p>You’ll spawn beside the waterfall. Hosts wear gold helmets <span class="tag">Sample</span>, so you can spot them if you need a hand.</p>
         </li>
@@ -995,15 +1031,15 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
         <div>
           <h2 id="faq-title">Questions</h2>
           <div class="faq">
-            <details class="panel">
+            <details class="panel" data-block>
               <summary>Does it cost anything?</summary>
               <div><p>No. Splash Hour is free to join and free to watch.</p></div>
             </details>
-            <details class="panel">
+            <details class="panel" data-block>
               <summary>Do I need to be good at Minecraft?</summary>
               <div><p>Not at all. Every activity works for first-timers, and you can sit any of them out.</p></div>
             </details>
-            <details class="panel">
+            <details class="panel" data-block>
               <summary>What if I can’t make it this week?</summary>
               <div><p>It happens every week at the same time, so you can catch the next one. Add it to your calendar or sign up for a reminder.</p></div>
             </details>
@@ -1013,14 +1049,15 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
 
       <div class="reminder" id="reminder">
         <h2 id="reminder-title">Never miss one<span class="hang">.</span></h2>
-        <p class="lede">Get an email before each Splash Hour starts.</p>
+        <p class="lede">A real version would email you before each Splash Hour starts. Try the sign-up to see how it works.</p>
 
-        <!-- Not wired to an email service yet: on a valid submit this shows the success state and sends nothing. -->
-        <form class="form panel" id="remind-form" novalidate aria-labelledby="reminder-title">
+        <!-- Example only: a valid submit shows the success state. Nothing is sent or stored. -->
+        <form class="form panel dirt-block" id="remind-form" novalidate aria-labelledby="reminder-title" aria-describedby="demo-note">
+          <p class="demo-note" id="demo-note"><strong>This form is here as an example.</strong> Nothing you type is sent or saved.</p>
           <div class="field">
             <label for="email">Email address</label>
             <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-hint email-error">
-            <p class="hint" id="email-hint">This is the only thing we ask for.</p>
+            <p class="hint" id="email-hint">Any address works. It never leaves this page.</p>
             <p class="error" id="email-error" role="alert"></p>
           </div>
           <div class="field">
@@ -1030,11 +1067,11 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
             </div>
             <p class="error" id="age-error" role="alert"></p>
           </div>
-          <button class="btn btn--go" type="submit">Sign up for reminders</button>
+          <button class="btn btn--go" type="submit">Try the sign-up</button>
         </form>
-        <div class="form panel success" id="remind-success" hidden tabindex="-1">
-          <h3>You’re signed up</h3>
-          <p>Reminders for Splash Hour will go to <strong id="success-email"></strong>.</p>
+        <div class="form panel dirt-block success" id="remind-success" hidden tabindex="-1">
+          <h3>That’s how it works</h3>
+          <p>This was a demo, so nothing was sent or saved.</p>
         </div>
       </div>
     </div>
@@ -1087,7 +1124,7 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
       clock.classList.toggle("is-live", live);
       $("#clock-title").textContent = live ? "Splash Hour is live" : "Next Splash Hour starts in";
       $("[data-when-label]").textContent = live ? "Started:" : "Your time:";
-      primary.textContent = live ? "Join now: get the server address" : "Get a weekly reminder";
+      primary.textContent = live ? "Join now: get the server address" : "Try the reminder sign-up";
       primary.setAttribute("href", live ? "#join" : "#reminder");
     }
     if (live) {
@@ -1112,8 +1149,8 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
       "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Splash Hour//Concept//EN", "BEGIN:VEVENT",
       "UID:splash-hour-weekly@splashhour.example", "DTSTAMP:" + stamp(new Date()),
       "DTSTART:" + stamp(start), "DURATION:PT" + EVENT.minutes + "M", "RRULE:FREQ=WEEKLY",
-      "SUMMARY:" + EVENT.title, "LOCATION:" + $("#server-address").textContent,
-      "DESCRIPTION:A free live meetup inside Minecraft. Server: " + $("#server-address").textContent,
+      "SUMMARY:" + EVENT.title + " (design concept, not a real event)", "LOCATION:" + $("#server-address").textContent,
+      "DESCRIPTION:Splash Hour is a made-up event from a design concept. There is no real server to join.",
       "END:VEVENT", "END:VCALENDAR"
     ].join("\r\n");
     const a = document.createElement("a");
@@ -1143,6 +1180,23 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
   setPaused(matchMedia("(prefers-reduced-motion: reduce)").matches);
   toggle.addEventListener("click", () => setPaused(!stage.classList.contains("is-paused")));
 
+  // ---- Concept note: collapse/expand, remembered per browser ----
+  const cToggle = $("#concept-toggle"), cMore = $("#concept-more");
+  const setNote = (open) => { cMore.hidden = !open; cToggle.setAttribute("aria-expanded", open); cToggle.textContent = open ? "Hide details" : "What is this?"; };
+  let noteOpen = true;
+  try { noteOpen = localStorage.getItem("splash-note") !== "closed"; } catch {}
+  setNote(noteOpen);
+  cToggle.addEventListener("click", () => {
+    const open = cMore.hidden;
+    setNote(open);
+    try { localStorage.setItem("splash-note", open ? "open" : "closed"); } catch {}
+  });
+
+  // ---- Text blocks: a different block for every panel on every load ----
+  const BLOCKS = ["oak", "birch", "cherry", "darkoak", "sand", "snow", "diamond", "emerald", "bricks", "deepslate"];
+  for (let i = BLOCKS.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [BLOCKS[i], BLOCKS[j]] = [BLOCKS[j], BLOCKS[i]]; }
+  document.querySelectorAll("[data-block]").forEach((el, i) => el.classList.add("blk-" + BLOCKS[i % BLOCKS.length]));
+
   // ---- Reminder form: validate on submit, clear each error once fixed ----
   const form = $("#remind-form"), email = $("#email"), age = $("#age");
   const checks = [
@@ -1166,7 +1220,6 @@ a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 2px;
     checks.forEach((c) => { const msg = c.test(); show(c, msg); if (msg && !first) first = c.el; });
     if (first) { first.focus(); return; }
     // Not connected to a service: nothing is sent.
-    $("#success-email").textContent = email.value.trim();
     form.hidden = true;
     const ok = $("#remind-success"); ok.hidden = false; ok.focus();
   });
